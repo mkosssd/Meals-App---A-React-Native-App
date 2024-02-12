@@ -1,21 +1,22 @@
-import { Image, ScrollView, StyleSheet, Text, View,Button } from 'react-native'
-import { MEALS } from '../data/dummy_data'
-import MealDetails from '../components/MealDetails'
-import Subtitle from '../components/MealDetail/Subtitle'
-import List from '../components/MealDetail/List'
 import { useLayoutEffect } from 'react'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import IconButton from '../components/IconButton'
+import List from '../components/MealDetail/List'
+import Subtitle from '../components/MealDetail/Subtitle'
+import MealDetails from '../components/MealDetails'
+import { MEALS } from '../data/dummy_data'
 const MealDetailScreen = ({ route, navigation }) => {
   const mealId = route.params.mealId
   const mealData = MEALS.find(meal => meal.id === mealId)
   const addMeHandler = () => {
-	console.log('ADD ME');
+    console.log('ADD ME')
   }
   useLayoutEffect(() => {
-	navigation.setOptions({
-		headerRight: ()=>{
-			return <Button title='Add Me' onPress={addMeHandler}/>
-		}
-	})
+    navigation.setOptions({
+      headerRight: () => {
+        return <IconButton onPress={addMeHandler} color='black' icon='star' />
+      }
+    })
   }, [navigation, addMeHandler])
   return (
     <ScrollView style={{ marginVertical: 10, paddingHorizontal: 10 }}>
@@ -37,7 +38,7 @@ export default MealDetailScreen
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: 'center'
   },
   image: {
     width: '100%',

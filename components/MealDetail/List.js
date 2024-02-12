@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 
 const List = ({ mealData }) => {
   return mealData.map(data => (
-    <View style={styles.ListContainer}>
+    <View key={data} style={styles.ListContainer}>
       <Text style={styles.List} key={data}>
         {data}
       </Text>
